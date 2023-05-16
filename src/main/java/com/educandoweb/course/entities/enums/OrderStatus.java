@@ -14,7 +14,8 @@ public enum OrderStatus {
 		return code;
 	}
 
-	// conversor de tipo numero para tipo enumerado
+//esse método permite obter uma instância 
+	//específica da enumeração OrderStatus
 	public static OrderStatus valueOf(int code) {
 		// percorrer td os valores do status
 		for (OrderStatus value : OrderStatus.values()) {

@@ -18,6 +18,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -65,9 +66,11 @@ public class Order implements Serializable {
 	}
 
 	public OrderStatus getOrderStatus() {
-		return OrderStatus.valueOf(orderStatus);
+		
+		return OrderStatus.valueOf(this.orderStatus);
 	}
 
+	//convertendo der status parar valor
 	public void setOrderStatus(OrderStatus orderStatus) {
 		if(orderStatus !=null) {
 		this.orderStatus = orderStatus.getCode();
