@@ -38,7 +38,7 @@ public class Order implements Serializable {
 	@JoinColumn(name = "client_id")
 	private User client;
 	
-	//relação associativa: relacao oneToMany com order em telação a class composta OrderIPK
+	//relação associativa: relacao oneToMany com order em relação a class composta OrderIPK
 	@OneToMany(mappedBy="id.order")
 	private Set<OrderItem> items = new HashSet<>();
 
