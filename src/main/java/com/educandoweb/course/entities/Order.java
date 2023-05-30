@@ -9,6 +9,7 @@ import java.util.Set;
 import com.educandoweb.course.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +17,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+
+//classe pedido é independente em relação a pagamento
 
 @Entity
 @Table(name = "tb_order")
@@ -41,6 +45,10 @@ public class Order implements Serializable {
 	//relação associativa: relacao oneToMany com order em relação a class composta OrderIPK
 	@OneToMany(mappedBy="id.order")
 	private Set<OrderItem> items = new HashSet<>();
+	
+	//mapeando as entidades para ter o mesmo id
+	@OneToOne(mappedBy="order", cascade = CascadeType.ALL)
+	private Payment payment;
 
 	// criar os construtores com e sem argumentos
 	public Order() {
@@ -91,10 +99,20 @@ public class Order implements Serializable {
 		this.client = client;
 	}
 	
+	
+	
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
 	public Set<OrderItem> getItems(){
 		return items;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

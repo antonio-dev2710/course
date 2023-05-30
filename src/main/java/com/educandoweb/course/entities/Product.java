@@ -55,6 +55,8 @@ public class Product implements Serializable {
 	joinColumns=@JoinColumn(name="product_id"),
 	inverseJoinColumns=@JoinColumn(name ="category_id"))
 	private Set<Category> category = new HashSet<>();
+	
+	
 	//o id ta ao ordemItem instacia de ordemItemPK
 	//em relação a ordemItemPK
 	@OneToMany(mappedBy= "id.product")
@@ -123,7 +125,7 @@ public class Product implements Serializable {
 		return category;
 	}
 	
-
+	//varrer a coleção de order item e pegar oq ta associado a ele
 	@JsonIgnore
 	public Set<Order> getOrders(){
 		Set<Order>set = new HashSet<>();
