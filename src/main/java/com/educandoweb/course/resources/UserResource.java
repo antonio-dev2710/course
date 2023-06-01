@@ -49,7 +49,7 @@ public class UserResource {
 
 	// vai ser enviado um objeto json com os campos do usário
 	// o response mais indicado pra dizer q foi criado um novo recurso é o 201
-	// metodo criated é esperado um cabeçalho chamado location cotendo o nuvo rcurso
+	// metodo criated é esperado um cabeçalho chamado location cotendo o novo recurso
 	// que foi inserido
 
 	@PostMapping
