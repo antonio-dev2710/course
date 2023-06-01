@@ -35,4 +35,21 @@ public class UserService {
 		repository.deleteById(id);
 	}
 	
+	public User update(Long id, User obj) {
+		//prepara o bojeto monitorado para vc mexer e 
+		//dps executa uma operação
+		User entity = repository.getReferenceById(id);
+		UpdateData(entity,obj);
+		
+		return repository.save(entity);
+	}
+
+	private void UpdateData(User entity, User obj) {
+		
+		//atualizar os dados dos entity com base oq chegou do obj
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
+		
+	}
+	
 }
